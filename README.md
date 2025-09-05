@@ -12,13 +12,13 @@ Simple syntax highlighting for BNF (Backus-Naur Form) grammar files in Neovim.
 ### Lazy.nvim
 ```lua
 {
-  "yourusername/bnf-syntax"
+  "adamkleo/bnf-syntax"
 }
 ```
 
 ### Packer
 ```lua
-use "yourusername/bnf-syntax"
+use "adamkleo/bnf-syntax"
 ```
 
 ## Usage
@@ -42,6 +42,7 @@ require("bnf-syntax").setup({
   extension = "bnf"
 })
 ```
+The extension option is used to match files ending with the chosen extension. The filetype option sets the filetype of the matched files. By default, these values are both "bnf"
 
 ## License
 
