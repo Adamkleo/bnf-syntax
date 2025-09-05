@@ -1,47 +1,43 @@
-# A Neovim Plugin Template
+# bnf-syntax.nvim
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ellisonleao/nvim-plugin-template/lint-test.yml?branch=main&style=for-the-badge)
-![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
+Simple syntax highlighting for BNF (Backus-Naur Form) grammar files in Neovim.
 
-A template repository for Neovim plugins.
+## Installation
 
-## Using it
-
-Via `gh`:
-
-```
-$ gh repo create my-plugin -p ellisonleao/nvim-plugin-template
+### Lazy.nvim
+```lua
+{
+  "yourusername/bnf-syntax"
+}
 ```
 
-Via github web page:
-
-Click on `Use this template`
-
-![](https://docs.github.com/assets/cb-36544/images/help/repository/use-this-template-button.png)
-
-## Features and structure
-
-- 100% Lua
-- Github actions for:
-  - running tests using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) and [busted](https://olivinelabs.com/busted/)
-  - check for formatting errors (Stylua)
-  - vimdocs autogeneration from README.md file
-  - luarocks release (LUAROCKS_API_KEY secret configuration required)
-
-### Plugin structure
-
+### Packer
+```lua
+use "yourusername/bnf-syntax"
 ```
-.
-├── lua
-│   ├── plugin_name
-│   │   └── module.lua
-│   └── plugin_name.lua
-├── Makefile
-├── plugin
-│   └── plugin_name.lua
-├── README.md
-├── tests
-│   ├── minimal_init.lua
-│   └── plugin_name
-│       └── plugin_name_spec.lua
+
+## Usage
+
+The plugin automatically detects `.bnf` files and applies syntax highlighting. No configuration required.
+
+Example BNF syntax that will be highlighted:
+```bnf
+<expression> ::= <term> | <expression> "+" <term>
+<term> ::= <factor> | <term> "*" <factor>
+<factor> ::= "(" <expression> ")" | <number>
 ```
+
+## Configuration
+
+Optionally customize the filetype and extension:
+
+```lua
+require("bnf-syntax").setup({
+  filetype = "bnf",
+  extension = "bnf"
+})
+```
+
+## License
+
+MIT
