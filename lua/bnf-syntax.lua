@@ -1,10 +1,11 @@
--- main module file
 local module = require("bnf-syntax.module")
 
 ---@class Config
----@field opt string Your config option
+---@field filetype string The filetype to set
+---@field extension string The file extension to detect
 local config = {
-  opt = "Hello!",
+  filetype = "bnf",
+  extension = "bnf",
 }
 
 ---@class MyModule
@@ -14,14 +15,22 @@ local M = {}
 M.config = config
 
 ---@param args Config?
--- you can define your setup function here. Usually configurations can be merged, accepting outside params and
--- you can also put some validation here for those.
 M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
 end
 
+-- Export config values for plugin/ to use
+M.get_filetype = function()
+  return M.config.filetype
+end
+
+M.get_extension = function()
+  return M.config.extension
+end
+
+-- Keep your existing hello function if you want
 M.hello = function()
-  return module.my_first_function(M.config.opt)
+  return module.my_first_function("Hello from BNF syntax!")
 end
 
 return M

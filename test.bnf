@@ -1,0 +1,2 @@
+<expression> ::= <term> | <expression> "+" <term>
+<term> ::= "number" | "identifier"
