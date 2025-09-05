@@ -2,6 +2,11 @@
 
 Simple syntax highlighting for BNF (Backus-Naur Form) grammar files in Neovim.
 
+## Demo
+
+![BNF Syntax Highlighting](assets/demo.gif)
+
+
 ## Installation
 
 ### Lazy.nvim
